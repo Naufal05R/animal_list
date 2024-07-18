@@ -3,7 +3,7 @@ import { Animal } from "@/types/Animal";
 export const animal: Array<Animal> = [
   {
     name: "Bear",
-    species: "Ursus arctos",
+    species: "Ursus Arctos",
     age: 20,
     weight: 300,
     habitat: "Forest",
@@ -11,7 +11,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Chicken",
-    species: "Gallus gallus",
+    species: "Gallus Gallus",
     age: 2,
     weight: 3,
     habitat: "Farm",
@@ -19,7 +19,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Cow",
-    species: "Bos taurus",
+    species: "Bos Taurus",
     age: 15,
     weight: 500,
     habitat: "Grassland",
@@ -35,7 +35,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Deer",
-    species: "Rusa unicolor",
+    species: "Rusa Unicolor",
     age: 15,
     weight: 150,
     habitat: "Forest",
@@ -51,7 +51,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Elephant",
-    species: "Loxodonta africana",
+    species: "Loxodonta Africana",
     age: 30,
     weight: 5000,
     habitat: "Forest",
@@ -67,7 +67,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Fox",
-    species: "Vulpes vulpes",
+    species: "Vulpes Vulpes",
     age: 10,
     weight: 10,
     habitat: "Forest",
@@ -75,7 +75,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Giraffe",
-    species: "Giraffa camelopardalis",
+    species: "Giraffa Camelopardalis",
     age: 20,
     weight: 800,
     habitat: "Savannah",
@@ -83,7 +83,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Hippopotamus",
-    species: "Hippopotamus amphibius",
+    species: "Hippopotamus Amphibius",
     age: 30,
     weight: 1500,
     habitat: "River",
@@ -91,7 +91,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Horse",
-    species: "Equus caballus",
+    species: "Equus Caballus",
     age: 20,
     weight: 400,
     habitat: "Grassland",
@@ -99,7 +99,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Kangaroo",
-    species: "Macropus giganteus",
+    species: "Macropus Giganteus",
     age: 25,
     weight: 80,
     habitat: "Grassland",
@@ -107,10 +107,10 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Koala",
-    species: "Phascolarctos cinereus",
+    species: "Phascolarctos Cinereus",
     age: 15,
     weight: 10,
-    habitat: "Eucalyptus forest",
+    habitat: "Eucalyptus Forest",
     diet: "Herbivore",
   },
   {
@@ -123,7 +123,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Leopard",
-    species: "Panthera pardus",
+    species: "Panthera Pardus",
     age: 12,
     weight: 100,
     habitat: "Savannah",
@@ -131,7 +131,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Lion",
-    species: "Panthera leo",
+    species: "Panthera Leo",
     age: 5,
     weight: 250,
     habitat: "Savannah",
@@ -139,7 +139,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Monkey",
-    species: "Macaca mulatta",
+    species: "Macaca Mulatta",
     age: 10,
     weight: 12,
     habitat: "Forest",
@@ -147,7 +147,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Ostrich",
-    species: "Struthio camelus",
+    species: "Struthio Camelus",
     age: 15,
     weight: 100,
     habitat: "Grassland",
@@ -171,7 +171,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Polar bear",
-    species: "Ursus maritimus",
+    species: "Ursus Maritimus",
     age: 20,
     weight: 800,
     habitat: "Arctic",
@@ -211,7 +211,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Tiger",
-    species: "Panthera tigris",
+    species: "Panthera Tigris",
     age: 15,
     weight: 200,
     habitat: "Forest",
@@ -227,7 +227,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Wolf",
-    species: "Canis lupus",
+    species: "Canis Lupus",
     age: 10,
     weight: 30,
     habitat: "Tundra",
@@ -235,7 +235,7 @@ export const animal: Array<Animal> = [
   },
   {
     name: "Zebra",
-    species: "Equus quagga",
+    species: "Equus Quagga",
     age: 15,
     weight: 400,
     habitat: "Grassland",

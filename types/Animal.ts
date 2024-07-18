@@ -1,4 +1,4 @@
-type Diet = "Carnivore" | "Herbivore" | "Omnivore";
+export type Diet = "Carnivore" | "Herbivore" | "Omnivore";
 
 export type Animal = {
   name: string;
