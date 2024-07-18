@@ -11,8 +11,6 @@ const EditForm = ({ animal }: { animal: Animal }) => {
   const { pending } = useFormStatus();
   const updateAnimalWithId = updateAnimal.bind(null, animal.id);
   const [state, formAction] = useFormState(updateAnimalWithId, null);
-  const { Error, message } = state ?? {};
-  const { age, diet, habitat, name, species, weight } = Error ?? {};
 
   return (
     <form action={formAction} className="grid grid-cols-4 gap-x-4">
@@ -26,7 +24,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           className="input"
         />
         <div id="name-error" aria-live="polite" aria-atomic="true">
-          <p className="mt-2 text-sm text-red-500">{name}</p>
+          <p className="mt-2 text-sm text-red-500">{state?.Error?.name}</p>
         </div>
       </label>
       <label htmlFor="species" className="col-span-4 mb-5">
@@ -39,7 +37,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           className="input"
         />
         <div id="species-error" aria-live="polite" aria-atomic="true">
-          <p className="mt-2 text-sm text-red-500">{species}</p>
+          <p className="mt-2 text-sm text-red-500">{state?.Error?.species}</p>
         </div>
       </label>
       <label htmlFor="age" className="col-span-2 mb-5 block">
@@ -54,7 +52,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           className="input"
         />
         <div id="age-error" aria-live="polite" aria-atomic="true">
-          <p className="mt-2 text-sm text-red-500">{age}</p>
+          <p className="mt-2 text-sm text-red-500">{state?.Error?.age}</p>
         </div>
       </label>
       <label htmlFor="weight" className="col-span-2 mb-5 block">
@@ -69,7 +67,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           className="input"
         />
         <div id="weight-error" aria-live="polite" aria-atomic="true">
-          <p className="mt-2 text-sm text-red-500">{weight}</p>
+          <p className="mt-2 text-sm text-red-500">{state?.Error?.weight}</p>
         </div>
       </label>
       <label htmlFor="habitat" className="col-span-4 mb-5">
@@ -82,10 +80,10 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           className="input"
         />
         <div id="habitat-error" aria-live="polite" aria-atomic="true">
-          <p className="mt-2 text-sm text-red-500">{habitat}</p>
+          <p className="mt-2 text-sm text-red-500">{state?.Error?.habitat}</p>
         </div>
       </label>
-      <SelectDiet className="col-span-4" errorAlert={diet} />
+      <SelectDiet className="col-span-4" errorAlert={state?.Error?.diet} />
 
       <div
         id="message-error"
@@ -93,7 +91,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
         aria-atomic="true"
         className="col-span-4"
       >
-        <p className="mt-2 text-sm text-red-500">{message}</p>
+        <p className="mt-2 text-sm text-red-500">{state?.message}</p>
       </div>
 
       <SubmitButton label="Update" isLoading={pending} className="col-span-4" />
