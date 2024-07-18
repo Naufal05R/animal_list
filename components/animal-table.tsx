@@ -28,7 +28,7 @@ const AnimalTable = async () => {
             <td className="px-6 py-3 text-center">{animal.weight}</td>
             <td className="px-6 py-3 text-center">{animal.habitat}</td>
             <td className="px-6 py-3 text-center">{animal.diet}</td>
-            <td className="space-x-1.5 px-6 py-3 text-center">
+            <td className="flex items-center justify-center gap-x-1.5 px-6 py-3">
               <EditButton id={animal.id} />
               <DeleteButton />
             </td>
