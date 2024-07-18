@@ -1,3 +1,4 @@
+import { deleteAnimal } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
@@ -25,11 +26,15 @@ export const EditButton = ({ id }: { id: string }) => {
   );
 };
 
-export const DeleteButton = () => {
+export const DeleteButton = ({ id }: { id: string }) => {
+  const deleteAnimalWithId = deleteAnimal.bind(null, id);
+
   return (
-    <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
-      <IoTrashOutline size={20} />
-    </button>
+    <form action={deleteAnimalWithId} className="inline-flex">
+      <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
+        <IoTrashOutline size={20} />
+      </button>
+    </form>
   );
 };
 
