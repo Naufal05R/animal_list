@@ -1,10 +1,18 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import React from "react";
 import SelectDiet from "./select-diet";
+import { useFormState } from "react-dom";
+import { saveAnimal } from "@/lib/actions";
 
 const CreateForm = () => {
+  const [state, formAction] = useFormState(saveAnimal, null);
+  const { Error, message } = state ?? {};
+  const { age, diet, habitat, name, species, weight } = Error ?? {};
+
   return (
-    <form action={""} className="grid grid-cols-4 gap-x-4">
+    <form action={formAction} className="grid grid-cols-4 gap-x-4">
       <label htmlFor="name" className="col-span-4 mb-5">
         <span className="block text-sm font-medium text-gray-900">Name</span>
         <input
@@ -14,6 +22,9 @@ const CreateForm = () => {
           placeholder="Bear"
           className="input"
         />
+        <div id="name-error" aria-live="polite" aria-atomic="true">
+          <p className="mt-2 text-sm text-red-500">{name}</p>
+        </div>
       </label>
       <label htmlFor="species" className="col-span-4 mb-5">
         <span className="block text-sm font-medium text-gray-900">Species</span>
@@ -24,6 +35,9 @@ const CreateForm = () => {
           placeholder="Ursus Arctos"
           className="input"
         />
+        <div id="species-error" aria-live="polite" aria-atomic="true">
+          <p className="mt-2 text-sm text-red-500">{species}</p>
+        </div>
       </label>
       <label htmlFor="age" className="col-span-2 mb-5 block">
         <span className="block text-sm font-medium text-gray-900">
@@ -36,6 +50,9 @@ const CreateForm = () => {
           placeholder="20"
           className="input"
         />
+        <div id="age-error" aria-live="polite" aria-atomic="true">
+          <p className="mt-2 text-sm text-red-500">{age}</p>
+        </div>
       </label>
       <label htmlFor="weight" className="col-span-2 mb-5 block">
         <span className="block text-sm font-medium text-gray-900">
@@ -48,6 +65,9 @@ const CreateForm = () => {
           placeholder="300"
           className="input"
         />
+        <div id="weight-error" aria-live="polite" aria-atomic="true">
+          <p className="mt-2 text-sm text-red-500">{weight}</p>
+        </div>
       </label>
       <label htmlFor="habitat" className="col-span-4 mb-5">
         <span className="block text-sm font-medium text-gray-900">Habitat</span>
@@ -58,8 +78,20 @@ const CreateForm = () => {
           placeholder="Forest"
           className="input"
         />
+        <div id="habitat-error" aria-live="polite" aria-atomic="true">
+          <p className="mt-2 text-sm text-red-500">{habitat}</p>
+        </div>
       </label>
-      <SelectDiet className="col-span-4" />
+      <SelectDiet className="col-span-4" errorAlert={diet} />
+
+      <div
+        id="message-error"
+        aria-live="polite"
+        aria-atomic="true"
+        className="col-span-4"
+      >
+        <p className="mt-2 text-sm text-red-500">{message}</p>
+      </div>
 
       <button
         type="submit"
