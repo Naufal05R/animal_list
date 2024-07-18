@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IoAddSharp } from "react-icons/io5";
+import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 
 export const CreateButton = () => {
   return (
@@ -10,5 +10,21 @@ export const CreateButton = () => {
       <IoAddSharp size={20} />
       Create
     </Link>
+  );
+};
+
+export const EditButton = () => {
+  return (
+    <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
+      <IoPencil size={20} />
+    </button>
+  );
+};
+
+export const DeleteButton = () => {
+  return (
+    <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
+      <IoTrashOutline size={20} />
+    </button>
   );
 };

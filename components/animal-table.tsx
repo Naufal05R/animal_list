@@ -1,4 +1,5 @@
 import { getAnimals } from "@/lib/data";
+import { DeleteButton, EditButton } from "./buttons";
 
 const AnimalTable = async () => {
   const animals = await getAnimals();
@@ -14,7 +15,7 @@ const AnimalTable = async () => {
           <th className="px-6 py-3 text-center">Weight</th>
           <th className="px-6 py-3 text-center">Habitat</th>
           <th className="px-6 py-3 text-center">Diet</th>
-          <th className="px-6 py-3 text-right">Action</th>
+          <th className="px-6 py-3 text-center">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +28,9 @@ const AnimalTable = async () => {
             <td className="px-6 py-3 text-center">{animal.weight}</td>
             <td className="px-6 py-3 text-center">{animal.habitat}</td>
             <td className="px-6 py-3 text-center">{animal.diet}</td>
-            <td className="flex justify-center gap-1 py-3">
-              
+            <td className="space-x-1.5 px-6 py-3 text-center">
+              <EditButton />
+              <DeleteButton />
             </td>
           </tr>
         ))}
