@@ -100,3 +100,19 @@ export const updateAnimal = async (
   revalidatePath("/animals");
   redirect("/animals");
 };
+
+export const deleteAnimal = async (id: string) => {
+  try {
+    await prisma.animal.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Failed to delete animal",
+    };
+  }
+
+  revalidatePath("/animals");
+};
