@@ -57,3 +57,46 @@ export const saveAnimal = async (prevState: any, formData: FormData) => {
   revalidatePath("/animals");
   redirect("/animals");
 };
+
+export const updateAnimal = async (
+  id: string,
+  prevState: any,
+  formData: FormData,
+) => {
+  const validatedFields = AnimalSchema.safeParse(
+    Object.fromEntries(formData.entries()),
+  );
+
+  const { success, data, error } = validatedFields;
+
+  if (!success) {
+    return {
+      Error: error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    const { age, diet, habitat, name, species, weight } = data;
+
+    await prisma.animal.update({
+      data: {
+        name,
+        species,
+        age,
+        weight,
+        habitat,
+        diet,
+      },
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Failed to update animal",
+    };
+  }
+
+  revalidatePath("/animals");
+  redirect("/animals");
+};

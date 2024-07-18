@@ -1,15 +1,16 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import React from "react";
 import SelectDiet from "./select-diet";
 import { useFormState, useFormStatus } from "react-dom";
-import { saveAnimal } from "@/lib/actions";
+import { updateAnimal } from "@/lib/actions";
 import { SubmitButton } from "./buttons";
+import type { Animal } from "@prisma/client";
 
-const CreateForm = () => {
+const EditForm = ({ animal }: { animal: Animal }) => {
   const { pending } = useFormStatus();
-  const [state, formAction] = useFormState(saveAnimal, null);
+  const updateAnimalWithId = updateAnimal.bind(null, animal.id);
+  const [state, formAction] = useFormState(updateAnimalWithId, null);
   const { Error, message } = state ?? {};
   const { age, diet, habitat, name, species, weight } = Error ?? {};
 
@@ -95,9 +96,9 @@ const CreateForm = () => {
         <p className="mt-2 text-sm text-red-500">{message}</p>
       </div>
 
-      <SubmitButton label="Save" isLoading={pending} />
+      <SubmitButton label="Update" isLoading={pending} />
     </form>
   );
 };
 
-export default CreateForm;
+export default EditForm;

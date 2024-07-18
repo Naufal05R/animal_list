@@ -1,5 +1,4 @@
 import CreateForm from "@/components/create-form";
-import { usePathname } from "next/navigation";
 
 export default function CreateAnimalPage() {
   return (

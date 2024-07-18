@@ -8,3 +8,12 @@ export const getAnimals = async () => {
     throw new Error("Failed to fetch contact data");
   }
 };
+
+export const getAnimalById = async (id: string) => {
+  try {
+    const animal = await prisma.animal.findUnique({ where: { id } });
+    return animal;
+  } catch (error) {
+    throw new Error("Failed to fetch animal data");
+  }
+};

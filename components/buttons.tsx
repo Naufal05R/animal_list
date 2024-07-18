@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 
@@ -13,11 +14,14 @@ export const CreateButton = () => {
   );
 };
 
-export const EditButton = () => {
+export const EditButton = ({ id }: { id: string }) => {
   return (
-    <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
+    <Link
+      href={`/animals/edit/${id}`}
+      className="inline-flex cursor-pointer rounded-sm border p-1 hover:bg-gray-100"
+    >
       <IoPencil size={20} />
-    </button>
+    </Link>
   );
 };
 
@@ -25,6 +29,33 @@ export const DeleteButton = () => {
   return (
     <button className="cursor-pointer rounded-sm border p-1 hover:bg-gray-100">
       <IoTrashOutline size={20} />
+    </button>
+  );
+};
+
+export const SubmitButton = ({
+  label,
+  isLoading,
+}: {
+  label: "Save" | "Update";
+  isLoading: boolean;
+}) => {
+  return (
+    <button
+      type="submit"
+      className={cn(
+        "w-full rounded-sm bg-blue-700 px-5 py-3 text-center text-sm font-medium text-white hover:bg-blue-800",
+        {
+          "cursor-progress opacity-50": isLoading,
+        },
+      )}
+      disabled={isLoading}
+    >
+      <span>
+        {isLoading
+          ? `${label.slice(0, label.charAt(label.length - 1) === "e" ? -1 : undefined)}ing...`
+          : label}
+      </span>
     </button>
   );
 };
