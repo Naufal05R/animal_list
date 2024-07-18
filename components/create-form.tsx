@@ -95,7 +95,7 @@ const CreateForm = () => {
         <p className="mt-2 text-sm text-red-500">{message}</p>
       </div>
 
-      <SubmitButton label="Save" isLoading={pending} />
+      <SubmitButton label="Save" isLoading={pending} className="col-span-4" />
     </form>
   );
 };

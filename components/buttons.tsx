@@ -36,15 +36,18 @@ export const DeleteButton = () => {
 export const SubmitButton = ({
   label,
   isLoading,
+  className,
 }: {
   label: "Save" | "Update";
   isLoading: boolean;
+  className?: string;
 }) => {
   return (
     <button
       type="submit"
       className={cn(
         "w-full rounded-sm bg-blue-700 px-5 py-3 text-center text-sm font-medium text-white hover:bg-blue-800",
+        className,
         {
           "cursor-progress opacity-50": isLoading,
         },
