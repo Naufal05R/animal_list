@@ -22,6 +22,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           id="name"
           placeholder="Bear"
           className="input"
+          defaultValue={animal.name}
         />
         <div id="name-error" aria-live="polite" aria-atomic="true">
           <p className="mt-2 text-sm text-red-500">{state?.Error?.name}</p>
@@ -35,6 +36,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           id="species"
           placeholder="Ursus Arctos"
           className="input"
+          defaultValue={animal.species}
         />
         <div id="species-error" aria-live="polite" aria-atomic="true">
           <p className="mt-2 text-sm text-red-500">{state?.Error?.species}</p>
@@ -50,6 +52,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           id="age"
           placeholder="20"
           className="input"
+          defaultValue={animal.age}
         />
         <div id="age-error" aria-live="polite" aria-atomic="true">
           <p className="mt-2 text-sm text-red-500">{state?.Error?.age}</p>
@@ -65,6 +68,7 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           id="weight"
           placeholder="300"
           className="input"
+          defaultValue={animal.weight}
         />
         <div id="weight-error" aria-live="polite" aria-atomic="true">
           <p className="mt-2 text-sm text-red-500">{state?.Error?.weight}</p>
@@ -78,12 +82,13 @@ const EditForm = ({ animal }: { animal: Animal }) => {
           id="habitat"
           placeholder="Forest"
           className="input"
+          defaultValue={animal.habitat}
         />
         <div id="habitat-error" aria-live="polite" aria-atomic="true">
           <p className="mt-2 text-sm text-red-500">{state?.Error?.habitat}</p>
         </div>
       </label>
-      <SelectDiet className="col-span-4" errorAlert={state?.Error?.diet} />
+      <SelectDiet defaultValue={animal.diet} className="col-span-4" errorAlert={state?.Error?.diet} />
 
       <div
         id="message-error"

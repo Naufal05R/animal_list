@@ -8,12 +8,14 @@ import { Diet } from "@/types/Animal";
 const SelectDiet = ({
   className,
   errorAlert,
+  defaultValue
 }: {
   className?: string;
   errorAlert?: string[];
+  defaultValue?: string;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedDiet, setSelectedDiet] = useState<string>("");
+  const [selectedDiet, setSelectedDiet] = useState<string>(defaultValue || "");
 
   return (
     <>
