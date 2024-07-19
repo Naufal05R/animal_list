@@ -10,14 +10,16 @@ const DIET = ["Carnivore", "Herbivore", "Omnivore"] as const;
 const AnimalSchema = z.object({
   name: z.string().min(4),
   species: z.string().min(4),
-  age: z.preprocess(
-    (inputAge) => parseInt(z.string().parse(inputAge), 10),
-    z.number().gte(1, "Min age is 1 Year"),
-  ),
-  weight: z.preprocess(
-    (inputWeight) => parseInt(z.string().parse(inputWeight), 10),
-    z.number().gte(1, "Min Weight is 1 Kg"),
-  ),
+  age: z
+    .string()
+    .regex(/^[1-9][0-9]*$/, "Invalid age (must be greater than 0)")
+    .transform((input) => parseInt(input, 10))
+    .refine((value) => value > 0, "Age must be greater than 0"),
+  weight: z
+    .string()
+    .regex(/^[1-9][0-9]*$/, "Invalid weight (must be greater than 0)")
+    .transform((input) => parseInt(input, 10))
+    .refine((value) => value > 0, "Weight must be greater than 0"),
   habitat: z.string().min(4),
   diet: z.enum(DIET),
 });

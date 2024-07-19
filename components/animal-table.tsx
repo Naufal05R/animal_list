@@ -1,8 +1,8 @@
 import { getAnimals } from "@/lib/data";
 import { DeleteButton, EditButton } from "./buttons";
 
-const AnimalTable = async () => {
-  const animals = await getAnimals();
+const AnimalTable = async ({ query }: {query: string}) => {
+  const animals = await getAnimals(query);
 
   return (
     <table className="w-full text-left text-sm text-gray-500">
