@@ -1,10 +1,10 @@
 export type Diet = "Carnivore" | "Herbivore" | "Omnivore";
 
-export type Animal = {
+export interface Animal {
   name: string;
   species: string;
-  age: number | string;
-  weight: number | string;
+  age: string;
+  weight: string;
   habitat: string;
   diet: Diet;
-};
+}

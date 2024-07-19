@@ -17,8 +17,8 @@ model Animal {
   id        String   @id @default(cuid())
   name      String
   species   String
-  age       Int
-  weight    Float
+  age       String
+  weight    String
   habitat   String
   diet      Diet
   createdAt DateTime @default(now())

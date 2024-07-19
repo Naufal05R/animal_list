@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { Diet } from "@/types/Animal";
 
 export const getAnimals = async (query: string) => {
   try {
@@ -14,6 +13,18 @@ export const getAnimals = async (query: string) => {
           },
           {
             species: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            age: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            weight: {
               contains: query,
               mode: "insensitive",
             },

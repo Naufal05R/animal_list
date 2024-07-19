@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Diet } from "@prisma/client";
 import React, { useState } from "react";
 import { IoCaretDownOutline } from "react-icons/io5";
-import { Diet } from "@/types/Animal";
 
 const SelectDiet = ({
   className,
