@@ -59,7 +59,7 @@ export const getAnimalById = async (id: string) => {
   }
 };
 
-export const getAnimalPage = async (query: string) => {
+export const getAnimalPages = async (query: string) => {
   try {
     const totalAnimals = await prisma.animal.count({
       where: {
