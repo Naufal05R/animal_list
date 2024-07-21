@@ -1,6 +1,5 @@
 import { getAnimals } from "@/lib/data";
 import { DeleteButton, EditButton } from "./buttons";
-import { number } from "zod";
 
 const AnimalTable = async ({
   query,

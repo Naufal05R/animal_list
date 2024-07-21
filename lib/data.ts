@@ -1,14 +1,14 @@
 import { prisma } from "@/lib/prisma";
 
-const ITEMS_PER_PAGE = 5 as const;
+const MAX_ITEM_PER_PAGE = 5 as const;
 
 export const getAnimals = async (query: string, currentPage: number) => {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-  
+  const offset = (currentPage - 1) * MAX_ITEM_PER_PAGE;
+
   try {
     const animals = await prisma.animal.findMany({
       skip: offset,
-      take: ITEMS_PER_PAGE,
+      take: MAX_ITEM_PER_PAGE,
       where: {
         OR: [
           {
@@ -46,7 +46,7 @@ export const getAnimals = async (query: string, currentPage: number) => {
     });
     return animals;
   } catch (error) {
-    throw new Error("Failed to fetch animal data");
+    throw new Error("Failed to fetch animals data");
   }
 };
 
@@ -55,6 +55,53 @@ export const getAnimalById = async (id: string) => {
     const animal = await prisma.animal.findUnique({ where: { id } });
     return animal;
   } catch (error) {
-    throw new Error("Failed to fetch animal data");
+    throw new Error("Failed to fetch animal data by id");
+  }
+};
+
+export const getAnimalPage = async (query: string) => {
+  try {
+    const totalAnimals = await prisma.animal.count({
+      where: {
+        OR: [
+          {
+            name: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            species: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            age: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            weight: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+          {
+            habitat: {
+              contains: query,
+              mode: "insensitive",
+            },
+          },
+        ],
+      },
+    });
+
+    const totalPages = Math.ceil(totalAnimals / MAX_ITEM_PER_PAGE);
+
+    return totalPages;
+  } catch (error) {
+    throw new Error("Failed to fetch animal page data");
   }
 };
