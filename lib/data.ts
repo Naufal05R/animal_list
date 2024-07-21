@@ -1,8 +1,14 @@
 import { prisma } from "@/lib/prisma";
 
-export const getAnimals = async (query: string) => {
+const ITEMS_PER_PAGE = 5 as const;
+
+export const getAnimals = async (query: string, currentPage: number) => {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  
   try {
     const animals = await prisma.animal.findMany({
+      skip: offset,
+      take: ITEMS_PER_PAGE,
       where: {
         OR: [
           {

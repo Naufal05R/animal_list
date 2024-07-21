@@ -1,8 +1,15 @@
 import { getAnimals } from "@/lib/data";
 import { DeleteButton, EditButton } from "./buttons";
+import { number } from "zod";
 
-const AnimalTable = async ({ query }: {query: string}) => {
-  const animals = await getAnimals(query);
+const AnimalTable = async ({
+  query,
+  currentPage,
+}: {
+  query: string;
+  currentPage: number;
+}) => {
+  const animals = await getAnimals(query, currentPage);
 
   return (
     <table className="w-full text-left text-sm text-gray-500">
