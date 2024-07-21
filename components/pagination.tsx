@@ -28,10 +28,28 @@ const PaginationArrow = ({
   );
 };
 
+const PaginationNumber = ({
+  page,
+  href,
+  position,
+  isActive,
+}: {
+  page: number;
+  href: string;
+  position?: "first" | "last" | "middle" | "only";
+  isActive: boolean;
+}) => {
+	const className = "flex h-10 w-10 items-center justify-center text-sm border text-blue-500";
+
+  return (
+    <Link href={href} className={className}>
+      {page}
+    </Link>
+  );
+};
+
 const Pagination = ({ totalPage }: { totalPage?: number }) => {
-  return <article className="">
-		
-	</article>;
+  return <article className=""></article>;
 };
 
 export default Pagination;
