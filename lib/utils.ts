@@ -14,7 +14,10 @@ export const formatDate = (dateStr: string) => {
   return formatter.format(date);
 };
 
-export const generatePagination = (currentPage: number, totalPages: number) => {
+export const generatePagination = (
+  currentPage: number,
+  totalPages: number,
+): Array<"..." | number> => {
   if (totalPages <= 7) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
