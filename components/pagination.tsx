@@ -41,11 +41,13 @@ const PaginationArrow = ({
 };
 
 const PaginationNumber = ({
+  currentPage,
   page,
   href,
   position,
   isActive,
 }: {
+  currentPage: number;
   page: string | number;
   href: string;
   position?: "first" | "last" | "middle" | "only";
@@ -59,6 +61,7 @@ const PaginationNumber = ({
       "z-10 bg-blue-100 border-blue-500 text-gray-800": isActive,
       "hover:bg-gray-100": !isActive && position !== "middle",
       "text-gray-300 pointer-event-none": position === "middle",
+      "max-xs:hidden": page === currentPage - 1 || page === currentPage + 1,
     },
   );
 
@@ -108,6 +111,7 @@ const Pagination = ({ totalPages: totalPage }: { totalPages: number }) => {
               href={createPageURL(page)}
               position={position}
               isActive={page === currentPage}
+              currentPage={currentPage}
             />
           );
         })}
