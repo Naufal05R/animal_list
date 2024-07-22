@@ -4,16 +4,24 @@ import { cn, generatePagination } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiChevronsLeft,
+  FiChevronsRight,
+} from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const PaginationArrow = ({
   href,
   direction,
   isDisabled,
+  isMax,
 }: {
   href: string;
   direction: "left" | "right";
   isDisabled?: boolean;
+  isMax?: boolean;
 }) => {
   const className = cn(
     "flex h-10 w-10 items-center justify-center text-sm border",
@@ -26,9 +34,15 @@ const PaginationArrow = ({
   );
   const icon =
     direction === "left" ? (
-      <MdChevronLeft size={20} />
+      isMax ? (
+        <FiChevronsLeft size={20} />
+      ) : (
+        <FiChevronLeft size={20} />
+      )
+    ) : isMax ? (
+      <FiChevronsRight size={20} />
     ) : (
-      <MdChevronRight size={20} />
+      <FiChevronRight size={20} />
     );
 
   return isDisabled ? (
@@ -41,19 +55,19 @@ const PaginationArrow = ({
 };
 
 const PaginationNumber = ({
-  currentPage,
   page,
   href,
   position,
   isActive,
+  className,
 }: {
-  currentPage: number;
   page: string | number;
   href: string;
   position?: "first" | "last" | "middle" | "only";
   isActive: boolean;
+  className?: string;
 }) => {
-  const className = cn(
+  const style = cn(
     "flex h-10 w-10 items-center justify-center text-sm border text-blue-500",
     {
       "rounded-l-sm": position === "first" || position === "only",
@@ -61,14 +75,14 @@ const PaginationNumber = ({
       "z-10 bg-blue-100 border-blue-500 text-gray-800": isActive,
       "hover:bg-gray-100": !isActive && position !== "middle",
       "text-gray-300 pointer-event-none": position === "middle",
-      "max-xs:hidden": page === currentPage - 1 || page === currentPage + 1,
     },
+    className,
   );
 
   return position === "middle" ? (
-    <div className={className}>{page}</div>
+    <div className={style}>{page}</div>
   ) : (
-    <Link href={href} className={className}>
+    <Link href={href} className={style}>
       {page}
     </Link>
   );
@@ -91,6 +105,12 @@ const Pagination = ({ totalPages: totalPage }: { totalPages: number }) => {
     <article className="inline-flex">
       <PaginationArrow
         direction="left"
+        href={createPageURL(1)}
+        isDisabled={currentPage <= 1}
+        isMax
+      />
+      <PaginationArrow
+        direction="left"
         href={createPageURL(currentPage - 1)}
         isDisabled={currentPage <= 1}
       />
@@ -111,7 +131,9 @@ const Pagination = ({ totalPages: totalPage }: { totalPages: number }) => {
               href={createPageURL(page)}
               position={position}
               isActive={page === currentPage}
-              currentPage={currentPage}
+              className={cn({
+                "max-sm:hidden": page !== currentPage
+              })}
             />
           );
         })}
@@ -121,6 +143,12 @@ const Pagination = ({ totalPages: totalPage }: { totalPages: number }) => {
         direction="right"
         href={createPageURL(currentPage + 1)}
         isDisabled={currentPage >= totalPage}
+      />
+      <PaginationArrow
+        direction="right"
+        href={createPageURL(totalPage)}
+        isDisabled={currentPage >= totalPage}
+        isMax
       />
     </article>
   );
