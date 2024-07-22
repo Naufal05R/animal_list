@@ -8,16 +8,20 @@ import { z } from "zod";
 const DIET = ["Carnivore", "Herbivore", "Omnivore"] as const;
 
 const AnimalSchema = z.object({
-  name: z.string().min(4),
+  name: z.string().min(3),
   species: z.string().min(4),
   age: z
-    .number()
-    .min(1, "Age must be greater than 0")
-    .transform((input) => String(input)),
+    .preprocess(
+      (inputWeight) => parseInt(z.string().parse(inputWeight), 10),
+      z.number().gte(1, "Min Age is 1 Year"),
+    )
+    .transform((input) => input.toString()),
   weight: z
-    .number()
-    .min(1, "Weight must be greater than 0")
-    .transform((input) => String(input)),
+    .preprocess(
+      (inputWeight) => parseInt(z.string().parse(inputWeight), 10),
+      z.number().gte(1, "Min Weight is 1 Kg"),
+    )
+    .transform((input) => input.toString()),
   habitat: z.string().min(4),
   diet: z.enum(DIET),
 });
