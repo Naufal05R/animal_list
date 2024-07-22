@@ -27,7 +27,7 @@ const AnimalsPage = async ({
           <AnimalTable query={query} currentPage={currentPage} />
         </Suspense>
       </section>
-      <div className="absolute bottom-0 left-1/2 mt-4 flex -translate-x-1/2 justify-center pb-2 sm:pb-4 lg:pb-8">
+      <div className="absolute bottom-0 left-1/2 mt-4 flex -translate-x-1/2 justify-center pb-8 sm:pb-24 lg:pb-8">
         <Pagination totalPages={totalPages} />
       </div>
     </main>
