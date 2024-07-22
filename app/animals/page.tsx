@@ -3,6 +3,8 @@ import Search from "@/components/search";
 import AnimalTable from "@/components/animal-table";
 import Pagination from "@/components/pagination";
 import { getAnimalPages } from "@/lib/data";
+import { Suspense } from "react";
+import { TableSkeletons } from "@/components/skeletons";
 
 const AnimalsPage = async ({
   searchParams,
@@ -21,7 +23,9 @@ const AnimalsPage = async ({
         <CreateButton />
       </hgroup>
       <section className="max-w-full overflow-x-scroll">
-        <AnimalTable query={query} currentPage={currentPage} />
+        <Suspense key={query + currentPage} fallback={<TableSkeletons />}>
+          <AnimalTable query={query} currentPage={currentPage} />
+        </Suspense>
       </section>
       <div className="absolute bottom-0 left-1/2 mt-4 flex -translate-x-1/2 justify-center pb-2 sm:pb-4 lg:pb-8">
         <Pagination totalPages={totalPages} />
