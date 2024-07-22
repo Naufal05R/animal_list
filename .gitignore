@@ -38,3 +38,6 @@ next-env.d.ts
 
 # prettier
 *prettier*
+
+# prisma
+/prisma/migrations
