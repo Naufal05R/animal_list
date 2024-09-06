@@ -39,7 +39,7 @@ const SelectDiet = ({
         >
           {!selectedDiet.length ? "Select Diet..." : selectedDiet}
           <IoCaretDownOutline
-            className={cn("transition duration-500", { "rotate-180": isOpen })}
+            className={cn("transition duration-300", { "rotate-180": isOpen })}
           />
         </h6>
         <input type="hidden" name="diet" value={selectedDiet} id="diet" />
