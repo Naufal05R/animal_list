@@ -8,7 +8,7 @@ import { IoCaretDownOutline } from "react-icons/io5";
 const SelectDiet = ({
   className,
   errorAlert,
-  defaultValue
+  defaultValue,
 }: {
   className?: string;
   errorAlert?: string[];
@@ -23,7 +23,7 @@ const SelectDiet = ({
         htmlFor="diet"
         className={cn(
           "relative mb-5 cursor-pointer rounded-sm",
-          { "pb-20": isOpen },
+          { "pb-32": isOpen },
           className,
         )}
         onClick={() => setIsOpen(!isOpen)}
