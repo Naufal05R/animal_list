@@ -45,7 +45,7 @@ const SelectDiet = ({
         <input type="hidden" name="diet" value={selectedDiet} id="diet" />
         <ul
           className={cn(
-            "absolute left-0 flex w-full flex-col divide-y divide-gray-300 rounded-sm border border-gray-300 bg-gray-50",
+            "absolute left-0 flex w-full overflow-y-scroll max-h-32 flex-col divide-y divide-gray-300 rounded-sm border border-gray-300 bg-gray-50",
             {
               hidden: !isOpen,
             },
