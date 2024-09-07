@@ -5,6 +5,8 @@ import { Diet } from "@prisma/client";
 import React, { useState } from "react";
 import { IoCaretDownOutline } from "react-icons/io5";
 
+const diets: Array<Diet> = ["Carnivore", "Herbivore", "Omnivore"];
+
 const SelectDiet = ({
   className,
   errorAlert,
@@ -51,17 +53,15 @@ const SelectDiet = ({
             },
           )}
         >
-          {(["Carnivore", "Herbivore", "Omnivore"] as Array<Diet>).map(
-            (diet, i) => (
-              <li
-                key={i}
-                className="z-10 p-2.5 text-sm text-gray-900 hover:bg-gray-100"
-                onClick={() => setSelectedDiet(diet)}
-              >
-                {diet}
-              </li>
-            ),
-          )}
+          {diets.map((diet, i) => (
+            <li
+              key={i}
+              className="z-10 p-2.5 text-sm text-gray-900 hover:bg-gray-100"
+              onClick={() => setSelectedDiet(diet)}
+            >
+              {diet}
+            </li>
+          ))}
         </ul>
       </label>
       <div id="phone-error" aria-live="polite" aria-atomic="true">
